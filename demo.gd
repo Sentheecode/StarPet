@@ -75,24 +75,47 @@ func rebuild_pet_sprite():
 	if dog:
 		dog.queue_free()
 	
-	# 根据体型设置基础尺寸
+	dog = Node2D.new()
+	dog.position = Vector2(135, 422)
+	dog.z_index = 422
+	game_layer.add_child(dog)
+	dog_sprite = Node2D.new()
+	dog.add_child(dog_sprite)
+	
+	# 判断是猫还是狗
+	if pet.species == "cat":
+		# 猫咪：使用图片
+		var cat_index = 0
+		# 根据品种获取图片索引
+		var cat_breeds = GameManager.cat_breeds
+		if pet.breed in cat_breeds:
+			cat_index = cat_breeds.find(pet.breed) % 16
+		
+		var sprite = Sprite2D.new()
+		var img_path = "res://sprites/cats/cat_%02d.png" % cat_index
+		sprite.texture = load(img_path)
+		
+		# 调整大小和位置
+		var scale_factor = 0.8
+		sprite.scale = Vector2(scale_factor, scale_factor)
+		sprite.position = Vector2(0, -20)  # 居中偏上
+		dog_sprite.add_child(sprite)
+		
+		# 猫咪不动，所以不需要添加行为相关节点
+		return
+	
+	# 狗狗：用代码绘制
 	var size_info = GameManager.size_bases[config.body_size]
 	var base_w = size_info["w"]
 	var base_h = size_info["h"]
 	var base_scale = size_info["scale"]
 	
-	dog = Node2D.new()
-	dog.position = Vector2(135, 422)
-	dog.z_index = 422
 	# 大型宠物位置稍微靠前一点
 	if config.body_size == 2:
 		dog.position.x = 140
 	elif config.body_size == 0:
 		dog.position.x = 130
 	dog.scale = Vector2(base_scale, base_scale)
-	game_layer.add_child(dog)
-	dog_sprite = Node2D.new()
-	dog.add_child(dog_sprite)
 	
 	# 身体
 	var body_w = base_w
