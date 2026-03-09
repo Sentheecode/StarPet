@@ -45,3 +45,18 @@ enabled=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[display.window]
+
+size/mode=2
+size/resizable=false
+size/initial_width=360
+size/initial_height=640
+size/minimum_size=Vector2i(360, 640)
+size/maximum_size=Vector2i(720, 1280)
+stretch/mode="viewport"
+stretch/aspect="expand"
+
+[application.android]
+
+config/display/orientation=0
