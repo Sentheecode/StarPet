@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "godot-mcp": {
-      "command": "npx",
-      "args": ["-y", "@satelliteoflove/godot-mcp", "--project", "/Users/wubin/StarOfficeUI"]
-    }
-  }
-}

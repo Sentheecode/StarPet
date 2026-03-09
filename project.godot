@@ -8,17 +8,20 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="StarPet"
 run/main_scene="res://demo.tscn"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://game_manager.gd"
-MCPGameBridge="res://addons/godot_mcp/game_bridge/mcp_game_bridge.gd"
 
 [display]
 
@@ -28,16 +31,13 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg")
 
-[godot_mcp]
 
 bind_mode=0
 custom_bind_ip=""
 port_override_enabled=false
 port_override=6550
 
-[plugin.godot_mcp]
 
 enabled=true
 
